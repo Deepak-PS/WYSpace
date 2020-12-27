@@ -1,6 +1,6 @@
 # WY Space Solution
 
-A java application to find the 30 minute period where the total downlink of all the satellite passes will be at its maximum. It also finds whether the ground station has bandwidth to support it based on the capacity of the ground station.
+A simple java application to find the 30 minute period where the total downlink of all the satellite passes will be at its maximum. It also finds whether the ground station has bandwidth to support it based on the capacity of the ground station.
 
 # Task
 
