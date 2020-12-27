@@ -19,17 +19,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
-	private static final String COLON = ":";
-	private static final int MINUTES = 60;
-	private static final int SECONDS = 60;
-	private static final String FILE_NAME = "2458843pass-schedule.txt";
-	private static final int TOTAL_MINUTES = 1440;
 
 	public static void main(String[] args) {
 
 		BufferedReader br;
 		String st;
 		String[] pass;
+
+		final String FILE_NAME = "2458843pass-schedule.txt";
 
 		int start = 0;
 		int end = 0;
@@ -64,7 +61,7 @@ public class Solution {
 						// to reinitialise 'end' if it extends to the next day, eg. start = 23:30, end =
 						// 00:00
 						if (start >= end) {
-							end += TOTAL_MINUTES;
+							end += 1440;
 						}
 
 						// get the duration of each pass
@@ -110,12 +107,13 @@ public class Solution {
 							}
 						}
 					}
-				} else {
+				}
+				else {
 					System.out.println("Please provide the bandwidth limit of the ground station as the argument.");
 				}
 
 			} catch (Exception e) {
-				System.out.println(e);
+				e.printStackTrace();
 			}
 		} else {
 			System.out.println("The file is not present.");
@@ -131,10 +129,10 @@ public class Solution {
 
 	private static int toMins(String time) {
 		if (time != null && !"".equals(time)) {
-			String[] hourMin = time.split(COLON);
+			String[] hourMin = time.split(":");
 			int hour = toInteger(hourMin[0]);
 			int mins = toInteger(hourMin[1]);
-			int hoursInMins = hour * MINUTES;
+			int hoursInMins = hour * 60;
 
 			return hoursInMins + mins;
 		}
@@ -146,10 +144,9 @@ public class Solution {
 	}
 
 	private static String toTime(int num) {
-		final String STRINGFORMAT = "00";
-		DecimalFormat decimalFormat = new DecimalFormat(STRINGFORMAT);
-		int hours = num / MINUTES;
-		int minutes = num % SECONDS;
-		return decimalFormat.format(hours) + COLON + decimalFormat.format(minutes);
+		final DecimalFormat decimalFormat = new DecimalFormat("00");
+		int hours = num / 60;
+		int minutes = num % 60;
+		return decimalFormat.format(hours) + ":" + decimalFormat.format(minutes);
 	}
 }
