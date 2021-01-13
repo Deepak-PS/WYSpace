@@ -17,5 +17,5 @@ The inputs in the file can be interpereted as:
 # How to run the program
 
 - Import the project on any IDE / use the terminal
-- Run the Solution.java file by passing the bandwidth of the ground station as an argument.
+- Run the Main.java file by passing the bandwidth of the ground station as an argument.
 
